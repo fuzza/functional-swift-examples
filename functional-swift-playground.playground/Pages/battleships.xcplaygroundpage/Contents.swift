@@ -57,7 +57,7 @@ extension Ship {
     }
 }
 
-// Functional 
+// Functional
 
 typealias Region = (Position) -> Bool
 
