@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='ios' display-mode='raw'>
+<playground version='6.0' target-platform='ios' display-mode='raw' executeOnSourceChanges='false'>
     <pages>
         <page name='battleships'/>
         <page name='core-image-filters'/>
         <page name='currying'/>
         <page name='map-filter-reduce'/>
+        <page name='optionals'/>
     </pages>
 </playground>
