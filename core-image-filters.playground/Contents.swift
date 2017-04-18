@@ -74,10 +74,8 @@ precedencegroup CombiningPrecedence {
 }
 
 infix operator >>> : CombiningPrecedence
-func >>> (_ filter1: @escaping Filter, _ filter2: @escaping Filter) -> Filter {
-    return { image in
-        filter1(filter2(image))
-    }
+func >>> <A, B, C>(_ f: @escaping (A) -> B, _ g: @escaping (B) -> C) -> (A) -> C {
+    return { x in g(f(x)) }
 }
 
 let url = URL(string: "https://d3nevzfk7ii3be.cloudfront.net/igi/DX2OGI5fYDA3jOZ5.medium")!
