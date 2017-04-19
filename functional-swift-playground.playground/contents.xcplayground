@@ -6,5 +6,6 @@
         <page name='currying'/>
         <page name='map-filter-reduce'/>
         <page name='optionals'/>
+        <page name='quick-check'/>
     </pages>
 </playground>
