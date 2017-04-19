@@ -2,9 +2,13 @@
 
 import Foundation
 
+// High-level helper functions
+
 func tabulate<A>(times:Int, _ transform: (Int) -> A) -> [A] {
     return (0..<times).map(transform)
 }
+
+// Protocols and protocol extensions
 
 protocol Arbitrary: Smaller {
     static func arbitrary() -> Self
@@ -19,6 +23,8 @@ extension Smaller {
         return nil
     }
 }
+
+// Extensions
 
 extension Int: Arbitrary {
     static func arbitrary() -> Int {
@@ -69,7 +75,8 @@ extension Array: Smaller {
     }
 }
 
-let numberOfIterations = 10
+// Quick-check helpers
+
 func iterateWhile<A>(_ condition: (A) -> Bool, initial: A, _ next: (A) -> A?) -> A {
     if let x = next(initial), condition(x) {
         return iterateWhile(condition, initial: x, next)
@@ -81,6 +88,8 @@ struct ArbitraryInstance <T> {
     let arbitrary: () -> T
     let smaller: (T) -> T?
 }
+
+let numberOfIterations = 10
 
 func checkHelper<A>(_ arbitraryInstance: ArbitraryInstance<A>, _ property: @escaping (A) -> Bool, _ message: String) {
     for _ in 0..<numberOfIterations {
@@ -94,6 +103,8 @@ func checkHelper<A>(_ arbitraryInstance: ArbitraryInstance<A>, _ property: @esca
     print("\(message) passed tests \(numberOfIterations) times")
 }
 
+// Quick-check implementation
+
 func check<A: Arbitrary>(_ message: String, _ property: @escaping (A) -> Bool) {
     let arbitraryInstance = ArbitraryInstance(arbitrary: A.arbitrary, smaller: { $0.smaller() })
     checkHelper(arbitraryInstance, property, message)
@@ -103,6 +114,8 @@ func check<A: Arbitrary>(_ message: String, _ property: @escaping ([A]) -> Bool)
     let instance = ArbitraryInstance(arbitrary: Array.arbitrary, smaller: { (x: [A]) in x.smaller() })
     checkHelper(instance, property, message)
 }
+
+// Client code examples
 
 check("Every string starts with hello or empty") { (s: String) in
     s.isEmpty || s.hasPrefix("Hello")
