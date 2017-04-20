@@ -7,5 +7,6 @@
         <page name='map-filter-reduce'/>
         <page name='optionals'/>
         <page name='quick-check'/>
+        <page name='enumerations'/>
     </pages>
 </playground>
