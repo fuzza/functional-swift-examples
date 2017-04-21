@@ -8,5 +8,6 @@
         <page name='optionals'/>
         <page name='quick-check'/>
         <page name='enumerations'/>
+        <page name='binary-search-tree'/>
     </pages>
 </playground>
