@@ -9,5 +9,6 @@
         <page name='quick-check'/>
         <page name='enumerations'/>
         <page name='binary-search-tree'/>
+        <page name='tries'/>
     </pages>
 </playground>
